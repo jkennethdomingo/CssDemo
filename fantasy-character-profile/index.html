@@ -3,47 +3,237 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Fantasy Character Profile</title>
+    <link rel="icon" type="image/webp" href="assets/img/Icon_Emoji_Paimon's_Paintings_15_Yelan_4.webp">
+
+    <title>Yelan Character Profile</title>
     <style>
+        /* Basic styling for the body: setting font, margin, padding, and background image */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Poppins', Arial, sans-serif;
             margin: 0;
             padding: 0;
+            background: url('assets/img/wallpaperflare.com_wallpaper.jpg'); /* Background image */
+            background-size: cover; /* Ensures the background image covers the entire page */
+            background-position: center; /* Centers the background image */
+            color: #e2e8f0; /* Light text color for better readability */
         }
 
+        /* Main profile container, centers the content and applies styling */
+        main {
+            max-width: 800px; /* Limits the width of the content */
+            margin: 40px auto; /* Centers the container horizontally */
+            background: rgba(30, 41, 59, 0.7); /* Semi-transparent background for the profile section */
+            border-radius: 10px; /* Rounded corners for the profile container */
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3); /* Adds shadow around the profile box */
+            overflow: hidden; /* Prevents content from overflowing */
+            backdrop-filter: blur(5px); /* Frosted glass effect for a blurred background */
+            animation: fadeIn 1s ease-in-out; /* Animation to fade in the profile container */
+        }
+
+        /* Animation for fading in the profile container */
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        /* Flexbox layout for centering content inside the profile section */
         .profile {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            padding: 20px;
+            text-align: center;
+            padding: 20px; /* Padding inside the profile container */
         }
 
+        /* Styling for the character image (circular shape) */
         .character-image {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            margin-right: 20px;
+            width: 200px; /* Sets image width */
+            height: 200px; /* Sets image height */
+            border-radius: 50%; /* Makes the image circular */
+            margin-bottom: 20px; /* Adds space below the image */
+            border: 4px solid #94a3b8; /* Adds a border around the image */
+            animation: bounceIn 1.2s ease-out; /* Animation for bouncing in the image */
         }
 
+        /* Bounce-in animation for the character image */
+        @keyframes bounceIn {
+            0% {
+                transform: scale(0.5);
+                opacity: 0;
+            }
+            60% {
+                transform: scale(1.1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(1);
+            }
+        }
+
+        /* Limits the width of the character details section */
         .character-details {
-            max-width: 70%;
+            max-width: 80%;
+            animation: slideUp 1s ease-in-out; /* Animation for sliding up text content */
+        }
+
+        /* Slide-up animation for the text content */
+        @keyframes slideUp {
+            from {
+                transform: translateY(20px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
+        }
+
+        /* Style for the character name */
+        h2 {
+            font-size: 2rem; /* Sets font size for the name */
+            margin: 0 0 10px; /* Adds space below the name */
+            color: #38bdf8; /* Light blue color for the name */
+        }
+
+        /* Flexbox layout for character stats, displayed horizontally */
+        .character-stats {
+            display: flex;
+            justify-content: center; /* Centers the stats horizontally */
+            gap: 20px; /* Adds space between stats */
+            margin: 20px 0; /* Adds margin above and below stats */
+            animation: fadeIn 1s ease-in-out 0.5s; /* Delayed fade-in animation for stats */
+            animation-fill-mode: forwards; /* Keeps the final animation state */
+        }
+
+        /* Styling for individual stat sections */
+        .stat {
+            text-align: center;
+        }
+
+        /* Style for the stat values (larger and bold) */
+        .stat-value {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #38bdf8; /* Light blue color for stat values */
+        }
+
+        /* Style for stat labels (smaller and lighter color) */
+        .stat-label {
+            font-size: 0.9rem;
+            color: #a8a29e; /* Light gray color for stat labels */
+        }
+
+        /* Footer styling with centered text and small font size */
+        footer {
+            text-align: center;
+            padding: 10px 0;
+            font-size: 0.8rem;
+            background: #0f172a; /* Dark background color for footer */
+            color: #94a3b8; /* Light gray color for footer text */
+            animation: fadeIn 1s ease-in-out 1s; /* Delayed fade-in for footer */
+            animation-fill-mode: forwards; /* Keeps the final state of the animation */
+        }
+
+        /* Styling for links: blue and no underline */
+        a {
+            color: #38bdf8; /* Blue color for links */
+            text-decoration: none; /* Removes underline from links */
+        }
+
+        /* Adds an underline to links when hovered over */
+        a:hover {
+            text-decoration: underline;
+        }
+
+        /* Styling for the background particles */
+        #particles-js {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1; /* Ensures particles stay in the background */
         }
     </style>
 </head>
 <body>
-<main>
-    <section class="profile">
-        <img class="character-image" src="assets/img/20200719_212209.jpg" alt="Character Image">
-        <div class="character-details">
-            <h2>Character Name</h2>
-            <p><strong>Class:</strong> Wizard</p>
-            <p><strong>Strength:</strong> 85</p>
-            <p><strong>Magic:</strong> 99</p>
-            <p><strong>Backstory:</strong> Brief backstory about the character.</p>
-        </div>
-    </section>
-</main>
-<footer>
-    <p>&copy; 2024 Fantasy World. All rights reserved.</p>
-</footer>
+    <!-- Embedding YouTube video to play background music -->
+    <iframe width="0" height="0" 
+            src="https://www.youtube.com/embed/Oatt7ic8dwI?autoplay=1&loop=1&playlist=Oatt7ic8dwI" 
+            frameborder="0" allow="autoplay; encrypted-media" allowfullscreen>
+    </iframe>
+
+    <!-- Div for background particles effect -->
+    <div id="particles-js"></div>
+
+    <main>
+        <section class="profile">
+            <!-- Character image -->
+            <img class="character-image" src="assets/img/yelan-genshin.gif" alt="Yelan">
+
+            <!-- Character details -->
+            <div class="character-details">
+                <h2>Yelan</h2>
+                <p><strong>Class:</strong> Hydro Bow</p>
+                <p><strong>Element:</strong> Hydro</p>
+                <p><strong>Faction:</strong> Ministry of Civil Affairs</p>
+                <p><strong>Backstory:</strong> Yelan is a mysterious and strategic figure, known for her cunning intelligence and shadowy connection to the Ministry of Civil Affairs.</p>
+            </div>
+
+            <!-- Character stats (Agility, Strength, Tactics) -->
+            <div class="character-stats">
+                <div class="stat">
+                    <div class="stat-value">95</div>
+                    <div class="stat-label">Agility</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">88</div>
+                    <div class="stat-label">Strength</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-value">100</div>
+                    <div class="stat-label">Tactics</div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer with copyright information -->
+    <footer>
+        <p>&copy; 2024 Genshin Impact Fan Page. All rights reserved. Images used under fair use.</p>
+    </footer>
+
+    <!-- External JavaScript for particles.js (background animation) -->
+    <script src="https://cdn.jsdelivr.net/particles.js/2.0.0/particles.min.js"></script>
+    <script>
+        particlesJS('particles-js', {
+            particles: {
+                number: { value: 50 }, // Number of particles to appear on the screen
+                size: { value: 3 }, // Size of each particle
+                color: { value: "#38bdf8" }, // Color of the particles (light blue in this case)
+                line_linked: {
+                    enable: true, // Links particles with lines
+                    color: "#38bdf8", // Color of the connecting lines
+                },
+                move: {
+                    speed: 1, // The speed at which the particles move
+                },
+            },
+            interactivity: {
+                events: {
+                    onhover: {
+                        enable: true, // Enables the interactive effect when you hover over the particles
+                        mode: "repulse", // The repulse mode makes the particles move away from the mouse when hovered
+                    },
+                },
+            },
+        });
+    </script>
 </body>
 </html>
